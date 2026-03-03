@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Akash Yadav - Senior Software Engineer" />
+    <meta name="author" content="Akash Yadav" />
+    <title>Akash Yadav - Senior Software Engineer</title>
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --accent:   #00e5ff;
+            --accent2:  #ff4d6d;
+            --bg:       #0f1117;
+            --surface:  #161a24;
+            --surface2: #1e2333;
+            --text:     #e8e8e8;
+            --muted:    #888;
+            --border:   #2a2a2a;
+            --nav-w:    260px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ── SIDEBAR ── */
+        #sideNav {
+            position: fixed;
+            top: 0; left: 0; bottom: 0;
+            width: var(--nav-w);
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 0 1.5rem;
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+
+        .nav-brand {
+            padding: 0 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+        .nav-brand .profile-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            display: block;
+            margin: 0 auto 1rem;
+            background: var(--surface2);
+        }
+        .nav-brand .profile-initials {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--surface2);
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .nav-brand .name {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .nav-brand .role {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-top: 0.25rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 1.5rem 0;
+            flex: 1;
+        }
+        .nav-links li a {
+            display: block;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 0.65rem 1.5rem;
+            border-left: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: var(--accent);
+            border-left-color: var(--accent);
+            padding-left: 2rem;
+        }
+
+        /* hamburger */
+        .nav-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem; left: 1rem;
+            z-index: 1100;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 40px; height: 40px;
+            cursor: pointer;
+            font-size: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ── MAIN ── */
+        main {
+            margin-left: var(--nav-w);
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 5rem 3rem;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .section-content { width: 100%; max-width: 860px; }
+
+        /* ── ABOUT ── */
+        #about { background: var(--bg); overflow: hidden; }
+        #about::before {
+            content: '';
+            position: absolute;
+            top: -40%; right: -5%;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(0,229,255,0.09) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        #about::after {
+            content: '';
+            position: absolute;
+            bottom: -20%; left: 10%;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(255,77,109,0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        #about h1 {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+        }
+        #about h1 span { color: var(--accent); }
+
+        .contact-line {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent2);
+            margin-bottom: 2rem;
+        }
+        .contact-line a {
+            color: var(--accent2);
+            text-decoration: none;
+        }
+        .contact-line a:hover { text-decoration: underline; }
+
+        .lead {
+            font-size: 1rem;
+            line-height: 1.85;
+            color: #aaa;
+            max-width: 660px;
+            margin-bottom: 2.5rem;
+        }
+
+        .social-icons { display: flex; gap: 0.75rem; }
+        .social-icon {
+            width: 42px; height: 42px;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .social-icon:hover {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+        }
+
+        /* ── SECTION HEADINGS ── */
+        #experience, #skills { background: var(--surface); }
+        #education {
+            min-height: unset;
+            padding: 3.5rem 3rem;
+        }
+
+        h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; left: 0;
+            width: 36px; height: 2px;
+            background: var(--accent);
+        }
+
+        /* ── EXPERIENCE CARDS ── */
+        .exp-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        #achievements { background: var(--surface); min-height: unset; padding: 3.5rem 3rem; }
+        #awards { background: var(--bg); min-height: unset; padding: 3.5rem 3rem; }
+
+        .achievement-card {
+            border: 1px solid var(--border);
+            border-left: 3px solid gold;
+            background: var(--bg);
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: -40%; right: -5%;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(255,215,0,0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .achievement-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.3rem 0.75rem;
+            background: rgba(255,215,0,0.1);
+            border: 1px solid rgba(255,215,0,0.35);
+            color: gold;
+            margin-bottom: 1.25rem;
+        }
+        .achievement-badge i { font-size: 0.75rem; }
+        .achievement-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.3rem;
+        }
+        .achievement-event {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+        }
+        .achievement-desc {
+            font-size: 0.92rem;
+            line-height: 1.8;
+            color: #aaa;
+            margin-bottom: 1.25rem;
+        }
+        .achievement-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 0.65rem;
+            margin-bottom: 1.25rem;
+        }
+        .achievement-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+            color: #bbb;
+            line-height: 1.5;
+        }
+        .achievement-feature i {
+            color: var(--accent);
+            font-size: 0.7rem;
+            margin-top: 0.3rem;
+            flex-shrink: 0;
+        }
+        .exp-card:hover { border-color: var(--accent); }
+
+        .exp-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .company {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin: 0.3rem 0 0.75rem;
+        }
+
+        .date {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--accent2);
+            padding: 0.2rem 0.6rem;
+            background: rgba(255,77,109,0.1);
+            border: 1px solid rgba(255,77,109,0.25);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .project-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+        }
+        .project-label:first-of-type { margin-top: 0; }
+
+        .exp-card ul {
+            padding-left: 1.2rem;
+            margin: 0 0 0.75rem;
+        }
+        .exp-card ul li {
+            font-size: 0.9rem;
+            line-height: 1.75;
+            color: #999;
+            margin-bottom: 0.3rem;
+        }
+        .exp-card ul li strong { color: var(--accent); font-weight: 700; }
+
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+        .tech-tag {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.05em;
+            padding: 0.2rem 0.5rem;
+            background: rgba(0,229,255,0.06);
+            border: 1px solid rgba(0,229,255,0.22);
+            color: var(--accent);
+        }
+
+        /* ── EDUCATION ── */
+        .edu-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent2);
+            padding: 1.5rem 1.75rem;
+        }
+        .edu-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        .edu-degree {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent2);
+            margin: 0.3rem 0 0.5rem;
+        }
+        .edu-loc {
+            font-size: 0.88rem;
+            color: var(--muted);
+        }
+
+        /* ── SKILLS ── */
+        .skill-block { margin-bottom: 1.75rem; }
+        .skill-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            margin-bottom: 0.65rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .skill-grid { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+        .skill-pill {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            padding: 0.35rem 0.85rem;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--text);
+            transition: all 0.2s;
+            cursor: default;
+        }
+        .skill-pill:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* ── AWARDS ── */
+        .award-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            margin-bottom: 0.75rem;
+            transition: border-color 0.2s;
+        }
+        .award-item:hover { border-color: var(--accent2); }
+        .award-item i { color: var(--accent); margin-top: 0.15rem; flex-shrink: 0; }
+        .award-item span { font-size: 0.92rem; color: var(--text); }
+
+        hr { border-color: var(--border); }
+
+        /* scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 991px) {
+            #sideNav { transform: translateX(-100%); }
+            #sideNav.open { transform: translateX(0); }
+            main { margin-left: 0; }
+            .nav-toggle { display: flex; }
+            section { padding: 5rem 1.5rem; }
+            #about h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body id="page-top">
+
+    <!-- Mobile toggle -->
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <nav id="sideNav">
+        <div class="nav-brand">
+            <!-- Replace src with your photo path e.g. src="assets/img/profile.jpg" -->
+            <img class="profile-photo" src="assets/img/profile.png" alt="Akash Yadav"
+                 onerror="this.style.display='none'; document.getElementById('initials').style.display='flex';" />
+            <div class="profile-initials" id="initials" style="display:none;">AY</div>
+            <div class="name">Akash Yadav</div>
+            <div class="role">Senior Software Engineer</div>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#awards">Certifications</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- About -->
+        <section id="about">
+            <div class="section-content">
+                <h1>Akash <span>Yadav</span></h1>
+                <div class="contact-line">
+                    Pune, India &nbsp;·&nbsp; +91 7758058069 &nbsp;·&nbsp;
+                    <a href="/cdn-cgi/l/email-protection#fe9f959f8d96879f9a9f88cccdcfcec7c7be99939f9792d09d9193"><span class="__cf_email__" data-cfemail="56373d37253e2f37323720646567666f6f16313b373f3a7835393b">[email&#160;protected]</span></a>
+                </div>
+                <p class="lead">
+                    Senior Software Engineer with 3.5+ years of experience in Java backend development, specializing in Spring Boot and microservices architectures. Experienced in designing secure, scalable REST APIs and integrating third-party and fintech services for high-availability platforms. Skilled in implementing AES/RSA encryption, Docker/Kubernetes deployments, and leveraging AI-assisted tools (GitHub Copilot, Claude Sonnet) for enhanced productivity. Strong exposure to end-to-end SDLC, cross-functional collaboration, and rapid issue resolution in production environments.
+                </p>
+                <div class="social-icons">
+                    <a class="social-icon" href="https://linkedin.com/in/akashyadav23" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="social-icon" href="/cdn-cgi/l/email-protection#64050f05170c1d05000512565755545d5d240309050d084a070b09" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <hr />
+
+        <!-- Experience -->
+        <section id="experience">
+            <div class="section-content">
+                <h2>Experience</h2>
+
+                <!-- Pine Labs -->
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <h3>Senior Software Engineer</h3>
+                            <div class="company">Pine Labs Pvt Ltd &nbsp;·&nbsp; Pune, India</div>
+                        </div>
+                        <span class="date">June 2024 – Present</span>
+                    </div>
+                    <div class="project-label">Project: Credit+ (Credit Plus – Issuing Platform)</div>
+                    <ul>
+                        <li>Designing and exposing secure REST APIs for customer onboarding, card lifecycle, authentication, and transaction authorization on an Issuing-side fintech platform.</li>
+                        <li>Contributed to RuPay UPI (Issuing) integration, enabling mobile-number–based customer identification and registration flows used by UPI apps (Google Pay, PhonePe).</li>
+                        <li>Implemented AES-based file encryption with RSA-secured keys and RSA encryption/decryption for sensitive credentials and password handling across multiple platforms.</li>
+                        <li>Owned L3 production support for issuing APIs; resolved post-live issues and customer-impacting incidents with minimal downtime.</li>
+                        <li>Automated batch executions via Dolphin Scheduler and led client onboarding &amp; go-live activities, reducing manual effort by <strong>70%</strong>.</li>
+                        <li>Leveraged AI-assisted tools (GitHub Copilot, Claude Sonnet) to accelerate log analysis, database validation, and troubleshooting.</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">Maven</span>
+                        <span class="tech-tag">Oracle DB</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">Bitbucket</span>
+                        <span class="tech-tag">GitHub Copilot</span>
+                        <span class="tech-tag">Claude Sonnet</span>
+                    </div>
+                </div>
+
+                <!-- Mindstix -->
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <h3>Member of Technical Staff</h3>
+                            <div class="company">Mindstix Software Labs Pvt. Ltd &nbsp;·&nbsp; Pune, India</div>
+                        </div>
+                        <span class="date">Dec 2021 – Nov 2023</span>
+                    </div>
+
+                    <div class="project-label">NALX (North America Learning Experience) | Estée Lauder &nbsp;·&nbsp; Jun 2022 – Nov 2023</div>
+                    <ul>
+                        <li>Designed and developed REST APIs for a middleware service integrated with Estée Lauder's enterprise learning platform.</li>
+                        <li>Integrated middleware with third-party event marketing platform (Splash) for seminar management.</li>
+                        <li>Collaborated with UI and backend teams for integration and end-to-end testing.</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">Azure</span>
+                    </div>
+
+                    <div class="project-label" style="margin-top:1.25rem;">On The Move – Products &amp; Platforms (OTM PNP) | Estée Lauder &nbsp;·&nbsp; Jan 2022 – Jun 2022</div>
+                    <ul>
+                        <li>Involved in microservices planning/structure and managing functionalities across services.</li>
+                        <li>Designed and developed REST and GraphQL APIs for the Notes and Pages microservice.</li>
+                        <li>Involved in planning and migration of Data and Services for all applications into a unified infrastructure.</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">GraphQL</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Swagger</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr />
+
+        <!-- Education -->
+        <section id="education">
+            <div class="section-content">
+                <h2>Education</h2>
+                <div class="edu-card">
+                    <div class="edu-header">
+                        <div>
+                            <h3>Savitribai Phule Pune University</h3>
+                            <div class="edu-degree">Master of Computer Applications</div>
+                            <div class="edu-loc">Pune, India</div>
+                        </div>
+                        <span class="date">2020 – 2022</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr />
+
+        <!-- Skills -->
+        <section id="skills">
+            <div class="section-content">
+                <h2>Skills</h2>
+
+                <div class="skill-block">
+                    <div class="skill-label">Backend &amp; Programming</div>
+                    <div class="skill-grid">
+                        <span class="skill-pill">Java</span>
+                        <span class="skill-pill">Spring Boot</span>
+                        <span class="skill-pill">Microservices</span>
+                        <span class="skill-pill">REST APIs</span>
+                        <span class="skill-pill">GraphQL</span>
+                        <span class="skill-pill">AES/RSA Encryption</span>
+                    </div>
+                </div>
+
+                <div class="skill-block">
+                    <div class="skill-label">DevOps &amp; Build Tools</div>
+                    <div class="skill-grid">
+                        <span class="skill-pill">Docker</span>
+                        <span class="skill-pill">Kubernetes</span>
+                        <span class="skill-pill">Maven</span>
+                        <span class="skill-pill">Git</span>
+                        <span class="skill-pill">Bitbucket</span>
+                        <span class="skill-pill">API Gateway</span>
+                        <span class="skill-pill">CI/CD Pipelines</span>
+                        <span class="skill-pill">SonarQube</span>
+                    </div>
+                </div>
+
+                <div class="skill-block">
+                    <div class="skill-label">Databases</div>
+                    <div class="skill-grid">
+                        <span class="skill-pill">Oracle DB</span>
+                        <span class="skill-pill">MySQL</span>
+                        <span class="skill-pill">MongoDB</span>
+                        <span class="skill-pill">Redis</span>
+                    </div>
+                </div>
+
+                <div class="skill-block">
+                    <div class="skill-label">AI &amp; Productivity</div>
+                    <div class="skill-grid">
+                        <span class="skill-pill">GitHub Copilot</span>
+                        <span class="skill-pill">Claude Sonnet</span>
+                    </div>
+                </div>
+
+                <div class="skill-block">
+                    <div class="skill-label">Professional Competencies</div>
+                    <div class="skill-grid">
+                        <span class="skill-pill">SDLC Leadership</span>
+                        <span class="skill-pill">L3 Production Support</span>
+                        <span class="skill-pill">Client Onboarding</span>
+                        <span class="skill-pill">Technical Mentoring</span>
+                        <span class="skill-pill">Agile / Scrum</span>
+                        <span class="skill-pill">Root-Cause Analysis</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr />
+
+        <!-- Achievements -->
+        <section id="achievements">
+            <div class="section-content">
+                <h2>Achievements</h2>
+
+                <div class="achievement-card">
+                    <div class="achievement-badge">
+                        <i class="fas fa-trophy"></i>
+                        Runner Up &nbsp;·&nbsp; Pine Labs Codeplay powered by AWS
+                    </div>
+                    <div class="achievement-title">Network AI Autonomous System (NAIAS)</div>
+                    <div class="achievement-event">Internal Hackathon &nbsp;·&nbsp; Pine Labs &nbsp;·&nbsp; 2024</div>
+                    <p class="achievement-desc">
+                        Built an event-driven, on-demand AI system designed to accelerate cloud network incident investigations. Instead of relying on traditional always-on monitoring tools, NAIAS activates only during incidents — correlating application logs, VPC Flow Logs, and Transit Gateway logs to deliver structured, explainable Root Cause Analysis, reducing investigation time and operational overhead.
+                    </p>
+                    <div class="achievement-features">
+                        <div class="achievement-feature">
+                            <i class="fas fa-circle-dot"></i>
+                            <span>Multi-agent orchestration</span>
+                        </div>
+                        <div class="achievement-feature">
+                            <i class="fas fa-circle-dot"></i>
+                            <span>LLM-powered investigation planning</span>
+                        </div>
+                        <div class="achievement-feature">
+                            <i class="fas fa-circle-dot"></i>
+                            <span>RAG for intelligent context retrieval</span>
+                        </div>
+                        <div class="achievement-feature">
+                            <i class="fas fa-circle-dot"></i>
+                            <span>MCP-based integrations for secure log access</span>
+                        </div>
+                        <div class="achievement-feature">
+                            <i class="fas fa-circle-dot"></i>
+                            <span>Automated Athena query generation</span>
+                        </div>
+                        <div class="achievement-feature">
+                            <i class="fas fa-circle-dot"></i>
+                            <span>Smart routing via AWS-powered infrastructure</span>
+                        </div>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Multi-Agent AI</span>
+                        <span class="tech-tag">LLM</span>
+                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">MCP</span>
+			<span class="tech-tag">Grafana Logs</span>
+                        <span class="tech-tag">Amazon Athena</span>
+                        <span class="tech-tag">VPC Flow Logs</span>
+                        <span class="tech-tag">Event-Driven Architecture</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr />
+
+        <!-- Certifications -->
+        <section id="awards">
+            <div class="section-content">
+                <h2>Certifications</h2>
+                <div class="award-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Java Programming &amp; Core Concepts</span>
+                </div>
+                <div class="award-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>SQL for Backend Development — Udemy</span>
+                </div>
+                <div class="award-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>DevOps Fundamentals – CI/CD, Docker Basics</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Mobile nav toggle
+        const toggle = document.getElementById('navToggle');
+        const nav    = document.getElementById('sideNav');
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('open');
+            toggle.innerHTML = nav.classList.contains('open')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close nav on link click (mobile)
+        document.querySelectorAll('#navLinks a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('open');
+                toggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks  = document.querySelectorAll('#navLinks a');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    const active = document.querySelector(`#navLinks a[href="#${entry.target.id}"]`);
+                    if (active) active.classList.add('active');
+                }
+            });
+        }, { threshold: 0.4 });
+
+        sections.forEach(s => observer.observe(s));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^
